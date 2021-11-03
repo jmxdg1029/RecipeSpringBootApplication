@@ -18,4 +18,5 @@ public class RecipeSpringBootApplication {
 	}
 
 
+	//JM is cute, sometimes
 }
