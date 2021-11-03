@@ -18,4 +18,5 @@ public class RecipeSpringBootApplication {
 		return String.format("Hello %s!", name);
 	}
 //you're stupid
+	//you're cute
 }
