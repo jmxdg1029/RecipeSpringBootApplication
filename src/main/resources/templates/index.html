@@ -9,20 +9,20 @@
     <form action="#" th:action="@{/}" th:object="${user}" method="post" >
         <div class="mb-3">
             <h2>Registration Page</h2>
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <label for="exampleFormControlInput1" class="form-label">Email Address</label>
             <input type="email" th:field="*{email}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Firstname</label>
+            <label for="exampleFormControlInput1" class="form-label">First Name</label>
             <input class="form-control" th:field="*{firstname}" type="text" placeholder="John" aria-label="default input example">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Lastname</label>
+            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
             <input class="form-control" th:field="*{lastname}" type="text" placeholder="Doe" aria-label="default input example">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input class="form-control" th:field="*{password}" type="text" aria-label="default input example">
+            <input class="form-control" th:field="*{password}" type="password" aria-label="default input example">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Register</button>
