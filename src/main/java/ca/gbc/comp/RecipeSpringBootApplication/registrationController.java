@@ -15,6 +15,7 @@ public class registrationController implements WebMvcConfigurer {
     @Autowired
     private UserRepository userRepository;
 
+
     @GetMapping("/registration")
     public String showForm(Model model){
         User user = new User();
@@ -23,11 +24,11 @@ public class registrationController implements WebMvcConfigurer {
     }
 
 
-    @PostMapping("/registration/Complete")
-    public String index(@ModelAttribute("user") User user){
+    @RequestMapping(params = "registSub", method = RequestMethod.POST)
+    public String registerSubmission(@ModelAttribute("user") User user){
         userRepository.save(user);
         System.out.println(user);
-        return "results";
+        return "home";
     }
 
 }
