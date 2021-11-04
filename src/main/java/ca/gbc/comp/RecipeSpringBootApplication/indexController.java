@@ -16,14 +16,31 @@ public class indexController implements WebMvcConfigurer {
     private UserRepository userRepository;
 
 
+
+
     @GetMapping("/")
-    public String loginForm(){
+    public String showLogin(@ModelAttribute("email") User user){
         return "index";
     }
 
+
+
     @RequestMapping(params = "submit", method = RequestMethod.POST)
-    public String loginSubmission(){
-        return "home";
+    public String loginSubmission(@ModelAttribute("email") String em, @ModelAttribute("password") String psw, User user){
+       if(userRepository.findByEmailAndPassword(em,psw) != null)
+       {
+           System.out.println(em);
+           System.out.println(psw);
+           System.out.println("it works");
+           return "home";
+       }
+       else{
+           System.out.println(em);
+           System.out.println(psw);
+           System.out.println("nope");
+           return "index";
+       }
+
     }
 
     @RequestMapping(params = "register", method = RequestMethod.POST)
