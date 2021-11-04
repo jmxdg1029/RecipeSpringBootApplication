@@ -16,7 +16,7 @@ public class indexController implements WebMvcConfigurer {
     private UserRepository userRepository;
 
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String loginForm(){
         return "index";
     }
