@@ -10,26 +10,24 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Controller
-public class indexController implements WebMvcConfigurer {
+public class registrationController implements WebMvcConfigurer {
 
     @Autowired
     private UserRepository userRepository;
 
-
-    @GetMapping("/index")
-    public String loginForm(){
-        return "index";
+    @GetMapping("/registration")
+    public String showForm(Model model){
+        User user = new User();
+        model.addAttribute("user",user);
+        return "registration";
     }
 
-    @RequestMapping(params = "submit", method = RequestMethod.POST)
-    public String loginSubmission(){
-        return "home";
-    }
 
-    @RequestMapping(params = "register", method = RequestMethod.POST)
-    public String registrationForm(){
-        return "redirect:/registration";
+    @PostMapping("/registration/Complete")
+    public String index(@ModelAttribute("user") User user){
+        userRepository.save(user);
+        System.out.println(user);
+        return "results";
     }
-
 
 }
