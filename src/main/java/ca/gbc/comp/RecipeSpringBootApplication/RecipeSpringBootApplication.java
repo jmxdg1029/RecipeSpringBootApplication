@@ -17,8 +17,4 @@ public class RecipeSpringBootApplication {
 		SpringApplication.run(RecipeSpringBootApplication.class, args);
 	}
 
-
-	//JM is cute, sometimes
-	//Ruzzel is cute, always
-	//Gabe is cute
 }
