@@ -1,17 +1,21 @@
 package ca.gbc.comp.RecipeSpringBootApplication;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue
+    private int id;
     private String firstname;
     private String lastname;
     private String password;
     private String email;
 
-    public User(String firstname, String lastname, String password, String emial){
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-        this.email = emial;
-    }
+
 
     public String getFirstname(){
         return firstname;
