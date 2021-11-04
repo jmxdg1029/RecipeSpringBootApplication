@@ -3,6 +3,8 @@ package ca.gbc.comp.RecipeSpringBootApplication;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -47,4 +49,6 @@ public class User {
     public void setPassword(String password){
         this.password = password;
     }
+
+
 }
