@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css%22%3E">
+<title>Login page</title>
+</head>
+<body>
+    <form th:action="@{/}" th:object="${loggedUser}" method="post" style="max-width: 350px; margin: 0 auto;">
+        <div class="border border-secondary p-3 rounded">
+            <h1>Login</h1>
+            <div class="form-group">
+                <label for="email" >Email: </label>
+                <input type="text" class="form-control" placeholder="Enter email" value="email" id="email" name= "email">
+            </div>
+            <div class= "form-group">
+                <label for="password">Password:</label>
+                <input type= "password" class=-"form-control" placeholder="Enter password" id="password" name="password">
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                <input class = "form-check-input" type="checkbox"> Remember me </label>
+            </div>
+            <button name="submit" type="submit" class="btn btn-primary" value="submit">Submit</button>
+            <button name="register" type="submit" class="btn btn-primary" value="register">Register Here</button>
+        </div>
+    </form>
+</body>
+</html>
