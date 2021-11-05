@@ -13,36 +13,17 @@ public class LoginController implements WebMvcConfigurer {
     private UserRepository userRepository;
 
 
-
-
-    @GetMapping("/")
+    @GetMapping("/login")
     public String showLogin(@ModelAttribute("email") User user){
         return "login";
     }
 
-    @RequestMapping(params = "submit", method = RequestMethod.POST)
-    public String loginSubmission(@ModelAttribute("email") String em, @ModelAttribute("password") String psw, @ModelAttribute("loggedUser") User user)
-            {
-       if(userRepository.findByEmailAndPassword(em,psw) != null)
-       {
-           System.out.println(em);
-           System.out.println(psw);
-           System.out.println("it works");
-           return "redirect:/home";
-       }
-       else{
-           System.out.println(em);
-           System.out.println(psw);
-           System.out.println("nope");
-           return "login";
-       }
-
+    @PostMapping("/login")
+    public String PassingNotesListPost(){
+        return "login";
     }
 
-    @RequestMapping(params = "register", method = RequestMethod.POST)
-    public String registrationForm(){
-        return "redirect:/registration";
-    }
+
 
 
 }
