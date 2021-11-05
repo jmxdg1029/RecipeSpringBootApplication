@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.Set;
 
-@Entity
+@Entity(name = "User")
 public class User {
 
     @Id
@@ -17,6 +17,12 @@ public class User {
     private String password;
     private String email;
 
+    public User(){}
+
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
 
     public String getFirstname(){
         return firstname;

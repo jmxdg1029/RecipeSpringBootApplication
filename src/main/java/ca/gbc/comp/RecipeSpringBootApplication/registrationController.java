@@ -15,23 +15,20 @@ public class registrationController implements WebMvcConfigurer {
 
 
     @GetMapping("/registration")
-    public String showForm(Model model){
-        User user = new User();
-        model.addAttribute("user",user);
+    public String showForm(@ModelAttribute("user") User user, Model model){
+        User users = new User();
+        model.addAttribute("user",users);
+        return "registration";
+    }
+
+    @PostMapping("/registration")
+    public String registeredForm(@ModelAttribute("user") User user){
+        userRepository.save(user);
+        System.out.println(user);
         return "registration";
     }
 
 
-    @RequestMapping(params = "registSub", method = RequestMethod.POST)
-    public String registerSubmission(@ModelAttribute("user") User user){
-        userRepository.save(user);
-        System.out.println(user);
-        return "login";
-    }
 
-    @RequestMapping(params = "loginPage", method = RequestMethod.POST)
-    public String backToLogin(){
-        return "login";
-    }
 
 }
