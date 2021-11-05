@@ -4,9 +4,7 @@ package ca.gbc.comp.RecipeSpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Controller
@@ -28,7 +26,12 @@ public class registrationController implements WebMvcConfigurer {
     public String registerSubmission(@ModelAttribute("user") User user){
         userRepository.save(user);
         System.out.println(user);
-        return "home";
+        return "login";
+    }
+
+    @RequestMapping(params = "loginPage", method = RequestMethod.POST)
+    public String backToLogin(){
+        return "login";
     }
 
 }

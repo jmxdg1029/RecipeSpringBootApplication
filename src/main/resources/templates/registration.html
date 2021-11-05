@@ -10,22 +10,23 @@
   <div class="mb-3">
     <h2>Registration Page</h2>
     <label for="exampleFormControlInput1" class="form-label">Email Address</label>
-    <input type="email" th:field="*{email}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <input type="email" th:field="*{email}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"required>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">First Name</label>
-    <input class="form-control" th:field="*{firstname}" type="text" placeholder="John" aria-label="default input example">
+    <input class="form-control" th:field="*{firstname}" type="text" placeholder="John" aria-label="default input example"required>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Last Name</label>
-    <input class="form-control" th:field="*{lastname}" type="text" placeholder="Doe" aria-label="default input example">
+    <input class="form-control" th:field="*{lastname}" type="text" placeholder="Doe" aria-label="default input example" required>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Password</label>
-    <input class="form-control" th:field="*{password}" type="password" aria-label="default input example">
+    <input class="form-control" th:field="*{password}" type="password" aria-label="default input example" required>
   </div>
   <div class="mb-3">
     <button type="submit" name="registSub" value="registSub" class="btn btn-primary">Register</button>
+    <button type="submit" name="loginPage" value="loginPage" class="btn btn-primary" formnovalidate>Back to Login</button>
   </div>
 </form>
 </body>
