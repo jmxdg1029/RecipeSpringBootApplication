@@ -15,13 +15,16 @@ public class indexController implements WebMvcConfigurer {
 
 
     @GetMapping("/home")
-    public String showForm(Model model){
+    public String showForm(){
         return "index";
     }
 
-    @RequestMapping(params = "logout", method = RequestMethod.POST)
+    @RequestMapping(params = "logoutBut", method = RequestMethod.POST)
     public String logoutButton(){
-        return "redirect:/registration";
+        System.out.println("LOGGED OUT");
+        return "login";
     }
+
+
 
 }
