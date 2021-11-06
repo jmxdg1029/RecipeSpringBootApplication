@@ -1,9 +1,6 @@
 package ca.gbc.comp.RecipeSpringBootApplication;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "User")
@@ -12,6 +9,7 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
+    @Column(nullable = false,unique = true)
     private String firstname;
     private String lastname;
     private String password;
@@ -24,6 +22,8 @@ public class User {
         this.password = password;
     }
 
+    public int getId(){return id;}
+    public void setId(int id){this.id = id;}
     public String getFirstname(){
         return firstname;
     }

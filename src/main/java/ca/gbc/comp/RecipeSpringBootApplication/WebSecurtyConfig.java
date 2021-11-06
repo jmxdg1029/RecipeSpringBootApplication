@@ -25,6 +25,7 @@ public class WebSecurtyConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable(); //delete this. for h2database access during development
         http.headers().frameOptions().disable(); //delete this. for h2database access during development
         http.formLogin().defaultSuccessUrl("/home");
+        System.out.println();
     }
 
     //allowing access to the website resource files(bootstrap, css etc.).
