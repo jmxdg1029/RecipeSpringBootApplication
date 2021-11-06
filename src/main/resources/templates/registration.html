@@ -10,15 +10,15 @@
   <div class="mb-3">
     <h2>Registration Page</h2>
     <label for="exampleFormControlInput1" class="form-label">Email Address</label>
-    <input type="email" value="jm@gmail.com" th:field="*{email}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"required>
+    <input type="email" th:field="*{email}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"required>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">First Name</label>
-    <input class="form-control"value="jm" th:field="*{firstname}" type="text" placeholder="John" aria-label="default input example"required>
+    <input class="form-control" th:field="*{firstname}" type="text" placeholder="John" aria-label="default input example"required>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Last Name</label>
-    <input class="form-control" value="jm" th:field="*{lastname}" type="text" placeholder="Doe" aria-label="default input example" required>
+    <input class="form-control" th:field="*{lastname}" type="text" placeholder="Doe" aria-label="default input example" required>
   </div>
   <div class="mb-3" th:with="np=${'{noop}'}">
     <label for="exampleFormControlInput1" class="form-label">Password</label>

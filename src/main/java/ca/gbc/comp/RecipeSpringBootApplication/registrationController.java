@@ -23,12 +23,21 @@ public class registrationController implements WebMvcConfigurer {
 
     @PostMapping("/registration")
     public String registeredForm(@ModelAttribute("user") User user){
-        userRepository.save(user);
-        System.out.println(user);
-        return "registration";
+        if (user.getEmail().length() > 0 && !user.getEmail().contains("@")) {
+            if(user.getFirstname().length() > 0 && user.getLastname().length() > 0 && user.getPassword().length() > 0) {
+                System.out.println("Try Again!");
+                return "registration";
+            }
+            System.out.println("Try Again!");
+            return "registration";
+        }
+        else if (user.getEmail().equals(null) || user.getEmail().equals("")){
+            return "redirect:login";
+        }
+        else {
+            userRepository.save(user);
+            System.out.println(user);
+            return "redirect:login";
+        }
     }
-
-
-
-
 }
