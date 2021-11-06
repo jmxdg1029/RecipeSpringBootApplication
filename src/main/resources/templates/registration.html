@@ -20,9 +20,9 @@
     <label for="exampleFormControlInput1" class="form-label">Last Name</label>
     <input class="form-control" value="jm" th:field="*{lastname}" type="text" placeholder="Doe" aria-label="default input example" required>
   </div>
-  <div class="mb-3">
+  <div class="mb-3" th:with="np=${'{noop}'}">
     <label for="exampleFormControlInput1" class="form-label">Password</label>
-    <input class="form-control" value="jm" th:field="*{password}" type="password" aria-label="default input example" required>
+    <input class="form-control" th:field="*{password}" type="password" aria-label="default input example" required>
   </div>
   <div class="mb-3">
     <button type="submit" name="registSub" value="registSub" class="btn btn-primary">Register</button>
