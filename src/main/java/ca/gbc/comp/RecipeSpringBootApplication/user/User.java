@@ -1,4 +1,4 @@
-package ca.gbc.comp.RecipeSpringBootApplication;
+package ca.gbc.comp.RecipeSpringBootApplication.user;
 
 import javax.persistence.*;
 import java.util.Set;

@@ -1,9 +1,9 @@
-package ca.gbc.comp.RecipeSpringBootApplication;
+package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
 
+import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -19,10 +19,10 @@ public class indexController implements WebMvcConfigurer {
         return "index";
     }
 
-    @RequestMapping(params = "logoutBut", method = RequestMethod.POST)
-    public String logoutButton(){
-        System.out.println("LOGGED OUT");
-        return "login";
+    @GetMapping("/create")
+    public String createButton()
+    {
+        return "addRecipe";
     }
 
 

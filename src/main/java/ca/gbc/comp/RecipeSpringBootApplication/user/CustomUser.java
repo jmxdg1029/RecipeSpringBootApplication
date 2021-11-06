@@ -1,5 +1,6 @@
-package ca.gbc.comp.RecipeSpringBootApplication;
+package ca.gbc.comp.RecipeSpringBootApplication.user;
 
+import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

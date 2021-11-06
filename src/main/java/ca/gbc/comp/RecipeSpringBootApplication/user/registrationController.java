@@ -1,6 +1,8 @@
-package ca.gbc.comp.RecipeSpringBootApplication;
+package ca.gbc.comp.RecipeSpringBootApplication.user;
 
 
+import ca.gbc.comp.RecipeSpringBootApplication.user.User;
+import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
