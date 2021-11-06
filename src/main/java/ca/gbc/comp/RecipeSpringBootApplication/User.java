@@ -9,7 +9,6 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
-    @Column(nullable = false,unique = true)
     private String firstname;
     private String lastname;
     private String password;
