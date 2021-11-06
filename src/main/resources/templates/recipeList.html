@@ -23,24 +23,32 @@
             <form  action="#" th:action="@{/logout}" method="post">
                 <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
             </form>
+            <form  action="#" th:action="@{/create}" method="get">
+                <button name="create" type="submit" class="btn btn-success" value="create">Create Recipe</button>
+            </form>
         </nav>
     </div>
 </head>
 <body>
-<h1>Create a Recipe</h1>
-<form action="#" th:action="@{/registRec}"  method="get" >
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input  class="form-control" id="name" name="name" type="text" p placeholder="Name"required>
-    </div>
-    <div class="mb-3">
-        <label for="desc" class="form-label">Description</label>
-        <input class="form-control" name="desc" type="text" id="desc" placeholder="Desc" aria-label="default input example"required>
-    </div>
-    <div class="mb-3">
-        <button type="submit"  class="btn btn-primary">Register Recipe</button>
-    </div>
-</form>
+<h1>Recipe List</h1>
+<table>
+    <thread>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>desc</th>
+            <th>Owner</th>
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}"></td>
+        <td th:text="${recipe.name}"></td>
+        <td th:text="${recipe.ingredient}"></td>
+        <td th:text="${recipe.user.firstname}"></td>
 
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
