@@ -1,4 +1,4 @@
-package ca.gbc.comp.RecipeSpringBootApplication;
+package ca.gbc.comp.RecipeSpringBootApplication.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

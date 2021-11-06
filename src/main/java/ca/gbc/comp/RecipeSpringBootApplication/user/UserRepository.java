@@ -1,18 +1,14 @@
-package ca.gbc.comp.RecipeSpringBootApplication;
+package ca.gbc.comp.RecipeSpringBootApplication.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmailAndPassword (String email, String password);
     User findByEmail(String email);
+    User findByFirstname(String name);
 }
 
 
