@@ -28,11 +28,19 @@
 </head>
 <body>
 <h1>Create a Recipe</h1>
-<form th:action="@{/register-recipe}" method="get">
-    <div class="form-group">
-        <label for=""
+<form action="#" th:action="@{/registRec}"  method="get" >
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input  class="form-control" id="name" name="name" type="text" p placeholder="Name"required>
     </div>
-
+    <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input class="form-control" name="desc" type="text" id="desc" placeholder="Desc" aria-label="default input example"required>
+    </div>
+    <div class="mb-3">
+        <button type="submit"  class="btn btn-primary">Register Recipe</button>
+    </div>
 </form>
+
 </body>
 </html>

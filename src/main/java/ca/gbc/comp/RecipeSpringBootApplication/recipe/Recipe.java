@@ -4,7 +4,7 @@ package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import javax.persistence.*;
 
-@Entity(name="Note")
+@Entity(name="Recipe")
 public class Recipe {
     @Id
     @GeneratedValue
