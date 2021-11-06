@@ -53,7 +53,7 @@ public class User {
     }
 
     public void setPassword(String password){
-        this.password = password;
+        this.password = "{noop}" + password;
     }
 
 
