@@ -45,7 +45,7 @@
             <th>Owner</th>
         </tr>
     </thread>
-    <body>
+    <tbody>
     <tr th:each="recipe : ${recipes}">
         <td th:text="${recipe.id}"></td>
         <td th:text="${recipe.name}"></td>
@@ -53,7 +53,7 @@
         <td th:text="${recipe.user.firstname}"></td>
 
     </tr>
-    </body>
+    </tbody>
 </table>
 </body>
 </html>

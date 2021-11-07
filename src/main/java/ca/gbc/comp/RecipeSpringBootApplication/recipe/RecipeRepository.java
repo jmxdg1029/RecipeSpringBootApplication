@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     Recipe findByUser(User user);
+<<<<<<< HEAD
 
     @Query(value="select r from Recipe r where r.name like %:search%")
     List<Recipe> findByKeyword(String search);
 
+=======
+    Recipe findByName(String name);
+>>>>>>> mealplandropmenu
 }
