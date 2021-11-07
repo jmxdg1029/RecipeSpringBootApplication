@@ -16,7 +16,7 @@
                     <a class="nav-link" th:href="@{/list}">View Recipe</a>
                 </li>
                 <li class="navbar-item">
-                    <a class="nav-link">Plan Meal</a>
+                    <a class="nav-link" th:href="@{/listMealPlan}">Meal Plan</a>
                 </li>
             </ul>
             <form  action="#" th:action="@{/logout}" method="post">
@@ -45,7 +45,7 @@
             <th>Owner</th>
         </tr>
     </thread>
-    <tbody>
+    <body>
     <tr th:each="recipe : ${recipes}">
         <td th:text="${recipe.id}"></td>
         <td th:text="${recipe.name}"></td>
@@ -53,7 +53,7 @@
         <td th:text="${recipe.user.firstname}"></td>
 
     </tr>
-    </tbody>
+    </body>
 </table>
 </body>
 </html>
