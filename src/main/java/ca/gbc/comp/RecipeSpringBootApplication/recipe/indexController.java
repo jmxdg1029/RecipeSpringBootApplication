@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.security.Principal;
-<<<<<<< HEAD
 import java.util.List;
-=======
 import java.util.Date;
->>>>>>> mealplandropmenu
 
 @Controller
 public class indexController implements WebMvcConfigurer {
