@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class indexController implements WebMvcConfigurer {
@@ -49,8 +50,13 @@ public class indexController implements WebMvcConfigurer {
     }
 
     @PostMapping("/list")
-    public String listRecipePost(Model model){
-        model.addAttribute("recipes",recipeRepository.findAll());
+    public String listRecipePost(Model model, @RequestParam String search){
+        if(search != null) {
+            model.addAttribute("recipes", recipeService.listAll(search));
+        }
+        else {
+            model.addAttribute("recipes", recipeRepository.findAll());
+        }
         return "recipeList";
     }
 
