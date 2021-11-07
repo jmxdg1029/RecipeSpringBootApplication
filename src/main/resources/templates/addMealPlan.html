@@ -23,48 +23,36 @@
             <form  action="#" th:action="@{/logout}" method="post">
                 <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
             </form>
+            <form  action="#" th:action="@{/create}" method="get">
+                <button name="create" type="submit" class="btn btn-success" value="create">Create Recipe</button>
+            </form>
         </nav>
     </div>
 </head>
 <body>
+
 <div class="container">
     <h1>Create a meal plan</h1>
+
+    </form>
     <form th:action="@{/registerMealPlan}" method="get">
         <div class="form-group">
-            <label for="breakfast">Select Breakfast</label>
-            <select multiple class="form-control" id="breakfast" name="breakfast">
-
-            </select>
+            <input type="date" id="start" name="trip-start"
+                   value="2018-07-22"
+                   min="2021-01-01" max="2021-12-31">
         </div>
         <div class="form-group">
-            <label for="snackOne">Select Snack One</label>
-            <select multiple class="form-control" id="snackOne" name="snackOne">
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="lunch">Select Lunch</label>
-            <select multiple class="form-control" id="lunch" name="lunch">
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="snackTwo">Select Snack Two</label>
-            <select multiple class="form-control" id="snackTwo" name="snackTwo">
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="dinner">Select Dinner</label>
-            <select multiple class="form-control" id="dinner" name="dinner">
-
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="snackThree">Select Snack Three</label>
-            <select multiple class="form-control" id="snackThree" name="snackThree">
-
-            </select>
+            <label>Select Meal</label>
+            <table>
+                <thead>
+                    <tr>Recipe Name</tr>
+                </thead>
+                <tbody>
+                <tr th:each="recipe : ${recipes}">
+                    <td th:value="${recipe.name}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="mb-3">
             <input type="submit" value="Submit" class="btn btn-primary mt-4">

@@ -33,27 +33,19 @@
 <table>
     <thread>
         <tr>
-            <th>Breakfast</th>
-            <th>Snack One</th>
-            <th>Lunch</th>
-            <th>Snack Two</th>
-            <th>Dinner</th>
-            <th>Snack Three</th>
+            <th>Date:</th>
+            <th>Recipe Name:</th>
         </tr>
     </thread>
     <body>
     <tr th:each="mealPlan : ${mealPlans}">
-        <td th:text="${mealPlan.breakfast}"></td>
-        <td th:text="${mealPlan.getSnackOne}"></td>
-        <td th:text="${mealPlan.lunch}"></td>
-        <td th:text="${mealPlan.getSnackTwo()}"></td>
-        <td th:text="${mealPlan.dinner}"></td>
-        <td th:text="${mealPlan.getSnackThree()}"></td>
+        <td th:text="${mealPlan.date}"></td>
+        <td th:text="${mealPlan.recipe}"></td>
     </tr>
     </body>
 </table>
 <form action="#" th:action="@{/createMealPlan}" method="get">
-    <button name="create" type="submit" class="btn btn-success" value="create">Create Recipe</button>
+    <button name="create" type="submit" class="btn btn-success" value="create">Create Meal Plan</button>
 </form>
 </body>
 </html>
