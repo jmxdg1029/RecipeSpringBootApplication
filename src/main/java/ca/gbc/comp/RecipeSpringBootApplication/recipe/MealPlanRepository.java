@@ -1,4 +1,4 @@
-package ca.gbc.comp.RecipeSpringBootApplication.mealplan;
+package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
 import ca.gbc.comp.RecipeSpringBootApplication.recipe.Recipe;
 import ca.gbc.comp.RecipeSpringBootApplication.user.User;

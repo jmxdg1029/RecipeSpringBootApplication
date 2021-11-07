@@ -21,6 +21,12 @@ public class indexController implements WebMvcConfigurer {
     RecipeRepository recipeRepository;
 
     @Autowired
+    MealPlanService mealPlanService;
+
+    @Autowired
+    MealPlanRepository mealPlanRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
 
@@ -35,11 +41,41 @@ public class indexController implements WebMvcConfigurer {
         return "addRecipe";
     }
 
+    @GetMapping(value = "/createMealPlan")
+    public String createMealPlanButton()
+    {
+        return "addMealPlan";
+    }
+
 
     @GetMapping(value = "/registRec")
     public String submitRec(@RequestParam String name, @RequestParam String desc, Principal principal){
         recipeService.registerRec(name,desc,principal);
         return "index";
+    }
+
+    @GetMapping(value = "/registerMealPlan")
+    public String submitMealPLan(@RequestParam String breakfast,
+                                 @RequestParam String snackOne,
+                                 @RequestParam String lunch,
+                                 @RequestParam String snackTwo,
+                                 @RequestParam String dinner,
+                                 @RequestParam String snackThree,
+                                 Principal principal){
+        mealPlanService.registerMealPlan(breakfast,snackOne,lunch,snackTwo,dinner,snackThree,principal);
+        return "index";
+    }
+
+    @GetMapping("/listMealPlan")
+    public String listMealPlanGet(Model model){
+        model.addAttribute("mealPlans",mealPlanRepository.findAll());
+        return "listMealPlan";
+    }
+
+    @PostMapping("/listMealPlan")
+    public String listMealPlanPost(Model model){
+        model.addAttribute("mealPlans",mealPlanRepository.findAll());
+        return "listMealPlan";
     }
 
     @GetMapping("/list")
