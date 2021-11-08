@@ -16,6 +16,8 @@ public class registrationController implements WebMvcConfigurer {
     private UserRepository userRepository;
 
 
+
+
     @GetMapping("/registration")
     public String showForm(@ModelAttribute("user") User user, Model model){
         User users = new User();
