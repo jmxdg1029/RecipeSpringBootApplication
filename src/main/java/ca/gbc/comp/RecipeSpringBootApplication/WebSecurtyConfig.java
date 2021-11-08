@@ -1,3 +1,11 @@
+/*
+Project: Swagapino Recipe website
+Assigment: 1
+Authors: John-Michael De Guzman, Ruzzel Orejola, Gabriel Silva
+Student Number: 101248,107, 101247477, 101245037
+Date: 11-07-2021
+Description: websecurityconfig uses spring security and all the configuration for it
+ */
 package ca.gbc.comp.RecipeSpringBootApplication;
 
 import org.springframework.context.annotation.Configuration;

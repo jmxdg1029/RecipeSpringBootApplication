@@ -1,3 +1,12 @@
+/*
+Project: Swagapino Recipe website
+Assigment: 1
+Authors: John-Michael De Guzman, Ruzzel Orejola, Gabriel Silva
+Student Number: 101248,107, 101247477, 101245037
+Date: 11-07-2021
+Description: customUserDetailsService has the function to load user details by their username
+ */
+
 package ca.gbc.comp.RecipeSpringBootApplication.user;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,3 +1,11 @@
+/*
+Project: Swagapino Recipe website
+Assigment: 1
+Authors: John-Michael De Guzman, Ruzzel Orejola, Gabriel Silva
+Student Number: 101248,107, 101247477, 101245037
+Date: 11-07-2021
+Description: This is the meal plan service, this allows to register a meal plan into the database
+ */
 package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
 import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;

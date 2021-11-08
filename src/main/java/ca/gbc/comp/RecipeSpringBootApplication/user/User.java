@@ -1,3 +1,11 @@
+/*
+Project: Swagapino Recipe website
+Assigment: 1
+Authors: John-Michael De Guzman, Ruzzel Orejola, Gabriel Silva
+Student Number: 101248,107, 101247477, 101245037
+Date: 11-07-2021
+Description: user is the user entity file with all setters and getters and parameters for the user object
+ */
 package ca.gbc.comp.RecipeSpringBootApplication.user;
 
 import javax.persistence.*;
