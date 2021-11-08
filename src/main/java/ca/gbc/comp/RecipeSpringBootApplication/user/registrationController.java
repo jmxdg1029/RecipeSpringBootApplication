@@ -23,6 +23,7 @@ public class registrationController implements WebMvcConfigurer {
         return "registration";
     }
 
+
     @PostMapping("/registration")
     public String registeredForm(@ModelAttribute("user") User user){
         if (user.getEmail().length() > 0 && !user.getEmail().contains("@")) {

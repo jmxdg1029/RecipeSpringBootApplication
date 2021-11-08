@@ -20,11 +20,11 @@
                     <a class="nav-link" th:href="@{/listMealPlan}">Plan Meal</a>
                 </li>
             </ul>
-            <form  action="#" th:action="@{/logout}" method="post">
-                <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
-            </form>
             <form  action="#" th:action="@{/create}" method="get">
                 <button name="create" type="submit" class="btn btn-success" value="create">Create Recipe</button>
+            </form>
+            <form  action="#" th:action="@{/logout}" method="post">
+                <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
             </form>
         </nav>
     </div>
@@ -37,22 +37,14 @@
     </form>
     <form th:action="@{/registerMealPlan}" method="get">
         <div class="form-group">
-            <input type="date" id="start" name="trip-start"
-                   value="2018-07-22"
-                   min="2021-01-01" max="2021-12-31">
+            <input type="date" id="date" name="date"
+                   min="2021-01-01" required>
         </div>
-        <div class="form-group">
-            <label>Select Meal</label>
-            <table>
-                <thead>
-                    <tr>Recipe Name</tr>
-                </thead>
-                <tbody>
-                <tr th:each="recipe : ${recipes}">
-                    <td th:value="${recipe.name}"></td>
-                </tr>
-                </tbody>
-            </table>
+        <div>
+            <label for="recipe">Select Recipe for meal plan</label>
+            <select id="recipe" name="recipe" required>
+                <option th:each="recipe : ${recipes}" th:text="${recipe.name}" th:value="${recipe.id}"/>
+            </select>
         </div>
         <div class="mb-3">
             <input type="submit" value="Submit" class="btn btn-primary mt-4">

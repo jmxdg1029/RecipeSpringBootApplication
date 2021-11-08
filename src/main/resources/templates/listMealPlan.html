@@ -19,11 +19,11 @@
                     <a class="nav-link" th:href="@{/listMealPlan}">Meal Plan</a>
                 </li>
             </ul>
-            <form  action="#" th:action="@{/logout}" method="post">
-                <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
-            </form>
             <form  action="#" th:action="@{/create}" method="get">
                 <button name="create" type="submit" class="btn btn-success" value="create">Create Recipe</button>
+            </form>
+            <form  action="#" th:action="@{/logout}" method="post">
+                <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
             </form>
         </nav>
     </div>
@@ -34,13 +34,15 @@
     <thread>
         <tr>
             <th>Date:</th>
-            <th>Recipe Name:</th>
+            <th></th>
+            <th>Meal Name:</th>
         </tr>
     </thread>
     <body>
     <tr th:each="mealPlan : ${mealPlans}">
         <td th:text="${mealPlan.date}"></td>
-        <td th:text="${mealPlan.recipe}"></td>
+        <td></td>
+        <td th:text="${mealPlan.recipe.name}"></td>
     </tr>
     </body>
 </table>
