@@ -16,9 +16,9 @@
                 <li class="navbar-item">
                     <a class="nav-link" th:href="@{/list}">View Recipe</a>
                 </li>
-                <form  action="#" th:action="@{/listMealPlan}" method="get">
-                    <button name="create" type="submit" class="btn btn-success" value="create">Meal Plan</button>
-                </form>
+                <li class="navbar-item">
+                    <a class="nav-link" th:href="@{/listMealPlan}">Plan Meal</a>
+                </li>
             </ul>
             <form  action="#" th:action="@{/logout}" method="post">
                 <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>

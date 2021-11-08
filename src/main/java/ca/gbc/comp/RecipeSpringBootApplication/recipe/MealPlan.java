@@ -1,9 +1,10 @@
 package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
-import ca.gbc.comp.RecipeSpringBootApplication.recipe.Recipe;
 import ca.gbc.comp.RecipeSpringBootApplication.user.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity(name="MealPlan")
@@ -11,7 +12,8 @@ public class MealPlan {
     @Id
     @GeneratedValue
     private int id;
-    private Date date;
+    @DateTimeFormat (pattern="YYYY-MM-DD")
+    private LocalDate date;
     @ManyToOne
     @JoinColumn
     private User user;
@@ -22,7 +24,7 @@ public class MealPlan {
     public MealPlan(){
     }
 
-    public MealPlan(Date date, Recipe recipe, User user)
+    public MealPlan(LocalDate date, Recipe recipe, User user)
     {
         this.date = date;
         this.recipe = recipe;
@@ -32,8 +34,8 @@ public class MealPlan {
     public int getId(){return id;}
     public void setId(Integer id){ this.id = id;}
 
-    public Date getDate(){return date;}
-    public void setDate(Date date){this.date = date;}
+    public LocalDate getDate(){return date;}
+    public void setDate(LocalDate date){this.date = date;}
 
     public User getUser(){return user;}
     public void setUser(User user){this.user = user;}

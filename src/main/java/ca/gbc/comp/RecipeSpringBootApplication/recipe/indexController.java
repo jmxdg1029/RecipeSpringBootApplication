@@ -5,12 +5,14 @@ import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Controller
@@ -44,8 +46,10 @@ public class indexController implements WebMvcConfigurer {
     }
 
     @GetMapping(value = "/createMealPlan")
-    public String createMealPlanButton()
+    public String createMealPlanButton(Model model)
     {
+        model.addAttribute("recipes",recipeRepository.findAll());
+        System.out.println(recipeRepository.findAll());
         return "addMealPlan";
     }
 
@@ -57,17 +61,14 @@ public class indexController implements WebMvcConfigurer {
     }
 
     @GetMapping(value = "/registerMealPlan")
-    public String submitMealPLanGet(Date date, Recipe recipe, Principal principal, Model model){
-        model.addAttribute("recipes",recipeRepository.findAll());
+    public String submitMealPlanGet(@RequestParam("date")
+                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                                    @RequestParam Recipe recipe,
+                                    Principal principal){
         mealPlanService.registerMealPlan(date,recipe,principal);
-        return "addMealPlan";
-    }
-
-    @PostMapping(value = "/registerMealPlan")
-    public String submitMealPLanPost(Date date, Recipe recipe, Principal principal, Model model){
-        model.addAttribute("recipes",recipeRepository.findAll());
-        mealPlanService.registerMealPlan(date,recipe,principal);
-        return "listMealPlan";
+        System.out.println(date);
+        System.out.println(recipe);
+        return "index";
     }
 
     @GetMapping("/listMealPlan")
