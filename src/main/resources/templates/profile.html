@@ -30,26 +30,31 @@
     </div>
 </head>
 <body>
-<h1>Profile</h1>
-<h2 th:text="${users.firstname}" />
-<h2 th:text="${users.email}" />
-<table>
-    <thread>
-        <tr>
-            <th>id</th>
-            <th>Name</th>
-            <th>desc</th>
-            <th>Owner</th>
+<div style="max-width: 350px; margin: 0 auto;">
+    <h1 style="color:blue;font-size:46px;">Profile</h1>
+    <div style="max-width: 350px; margin: 0 auto;">
+        <h2 th:text="${users.firstname}"/>
+        <h2 th:text="${users.email}" />
+    </div>
+
+    <table>
+        <thread>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>desc</th>
+                <th>Owner</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipes.id}"></td>
+            <td th:text="${recipes.name}"></td>
+            <td th:text="${recipes.ingredient}"></td>
+            <td th:text="${recipes.user.firstname}"></td>
         </tr>
-    </thread>
-    <tbody>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipes.id}"></td>
-        <td th:text="${recipes.name}"></td>
-        <td th:text="${recipes.ingredient}"></td>
-        <td th:text="${recipes.user.firstname}"></td>
-    </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

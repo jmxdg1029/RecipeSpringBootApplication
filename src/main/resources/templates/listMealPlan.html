@@ -29,25 +29,27 @@
     </div>
 </head>
 <body>
-<h1>Meal Plan</h1>
-<table>
-    <thread>
-        <tr>
-            <th>Date:</th>
-            <th></th>
-            <th>Meal Name:</th>
-        </tr>
-    </thread>
-    <body>
-    <tr th:each="mealPlan : ${mealPlans}">
-        <td th:text="${mealPlan.date}"></td>
-        <td></td>
-        <td th:text="${mealPlan.recipe.name}"></td>
-    </tr>
-    </body>
-</table>
-<form action="#" th:action="@{/createMealPlan}" method="get">
-    <button name="create" type="submit" class="btn btn-success" value="create">Create Meal Plan</button>
-</form>
+<div style="max-width: 350px; margin: 0 auto;">
+    <h1>Meal Plan</h1>
+    <table style="margin-bottom: 100px">
+        <thread>
+            <tr>
+                <th>Date:</th>
+                <th></th>
+                <th>Meal Name:</th>
+            </tr>
+        </thread>
+        <div>
+            <tr th:each="mealPlan : ${mealPlans}">
+                <td th:text="${mealPlan.date}"></td>
+                <td></td>
+                <td th:text="${mealPlan.recipe.name}"></td>
+            </tr>
+        </div>
+    </table>
+    <form action="#" th:action="@{/createMealPlan}" method="get">
+        <button name="create" type="submit" class="btn btn-success" value="create">Create Meal Plan</button>
+    </form>
+</div>
 </body>
 </html>
