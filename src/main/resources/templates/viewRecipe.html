@@ -36,23 +36,24 @@
         <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${users.lastname}"/>
     </div>
 
-        <ul class="navbar-nav nav mr-auto" style="font-size: 1.1em; border: 1px solid; padding: 20px">
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">Edit Profile</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/viewRecipe}">View My Recipes</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/profile}">View My Shopping List</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">View My Favourite Recipes</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">View My Plan Meal</a>
-            </li>
-        </ul>
+    <table>
+        <thread>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>desc</th>
+                <th>Owner</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="recipe : ${recipes}">
+            <td th:text="${recipes.id}"></td>
+            <td th:text="${recipes.name}"></td>
+            <td th:text="${recipes.ingredient}"></td>
+            <td th:text="${recipes.user.firstname}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

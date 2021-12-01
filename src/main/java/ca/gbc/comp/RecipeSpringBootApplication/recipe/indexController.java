@@ -114,16 +114,28 @@ public class indexController implements WebMvcConfigurer {
 
     @GetMapping("/profile")
     public String profileGet(Model model, Principal principal){
-        model.addAttribute("recipes",recipeRepository.findByUser(userRepository.findByEmail(principal.getName())));
         model.addAttribute("users",userRepository.findByEmail(principal.getName()));
         return "profile";
     }
 
     @PostMapping("/profile")
     public String profilePost(Model model, Principal principal){
-        model.addAttribute("recipes",recipeRepository.findByUser(userRepository.findByEmail(principal.getName())));
         model.addAttribute("users",userRepository.findByEmail(principal.getName()));
         return "profile";
+    }
+
+    @GetMapping("/viewRecipe")
+    public String RecipeGet(Model model, Principal principal){
+        model.addAttribute("recipes",recipeRepository.findByUser(userRepository.findByEmail(principal.getName())));
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "viewRecipe";
+    }
+
+    @PostMapping("/viewRecipe")
+    public String RecipePost(Model model, Principal principal){
+        model.addAttribute("recipes",recipeRepository.findByUser(userRepository.findByEmail(principal.getName())));
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "viewRecipe";
     }
 
 }
