@@ -14,8 +14,10 @@ import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 import java.util.Locale;
 
@@ -24,8 +26,6 @@ public class registrationController implements WebMvcConfigurer {
 
     @Autowired
     private UserRepository userRepository;
-
-
 
 
     @GetMapping("/registration")
@@ -38,22 +38,16 @@ public class registrationController implements WebMvcConfigurer {
 
     @PostMapping("/registration")
     public String registeredForm(@ModelAttribute("user") User user, @RequestParam String email){
-
-        if (user.getEmail().length() > 0 && !user.getEmail().contains("@")) {
-            if(user.getFirstname().length() > 0 && user.getLastname().length() > 0 && user.getPassword().length() > 0) {
-                System.out.println("Try Again!");
-                return "registration";
-            }
-            System.out.println("Try Again!");
-            return "registration";
-        }
-        else if (user.getEmail().equals(null) || user.getEmail().equals("")){
+        if (userRepository.findByEmail(email) == null){
+            userRepository.save(user);
+            System.out.println(user);
+            System.out.println(userRepository.count());
             return "redirect:login";
         }
         else {
-            userRepository.save(user);
-            System.out.println(user);
-            return "redirect:login";
+            user.setEmail(null);
+            return "registration";
         }
+
     }
 }
