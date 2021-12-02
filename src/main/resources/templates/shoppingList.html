@@ -30,29 +30,24 @@
     </div>
 </head>
 <body>
-<div style="max-width: 350px; margin: 0 auto;">
 
+<div style="max-width: 350px; margin: 0 auto;">
     <div style="max-width: 350px;">
         <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${users.lastname}"/>
     </div>
-
-        <ul class="navbar-nav nav mr-auto" style="font-size: 1.1em; border: 1px solid; padding: 20px">
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">Edit Profile</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/viewRecipe}">View My Recipes</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/shoppingList}">View My Shopping List</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">View My Favourite Recipes</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">View My Plan Meal</a>
-            </li>
-        </ul>
+    <h3>Shopping List:</h3>
+    <table>
+        <thread>
+            <tr>
+                <th>Ingredient</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="shopp : ${shopping}">
+            <td th:text="${shopp.ingredient}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
