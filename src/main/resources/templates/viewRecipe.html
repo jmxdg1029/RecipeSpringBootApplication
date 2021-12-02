@@ -47,16 +47,8 @@
         </thread>
         <tbody>
         <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipes.id}"></td>
-            <td th:text="${recipes.name}"></td>
-            <td th:text="${recipes.ingredient}"></td>
-            <td th:text="${recipes.user.firstname}"></td>
-            <td>
-                <form th:action="@{/view-btn}" method="get">
-                    <input type="text" name="id" th:value="${recipes.getId()}" class="d-none">
-                    <input type="submit" value="View" class="btn btn-warning">
-                </form>
-            </td>
+            <td th:text="${recipe}"></td>
+
         </tr>
         </tbody>
     </table>

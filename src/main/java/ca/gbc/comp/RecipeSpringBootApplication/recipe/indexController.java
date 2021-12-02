@@ -44,6 +44,11 @@ public class indexController implements WebMvcConfigurer {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    ShoppingListRepository shoppingListRepository;
+
+    @Autowired
+    ShoppingListService shoppingListService;
 
     @GetMapping("/home")
     public String showForm(){
@@ -126,14 +131,14 @@ public class indexController implements WebMvcConfigurer {
 
     @GetMapping("/viewRecipe")
     public String RecipeGet(Model model, Principal principal){
-        model.addAttribute("recipes",recipeRepository.findByUser(userRepository.findByEmail(principal.getName())));
+        model.addAttribute("recipes",recipeService.listAllRecipe(principal.getName()));
         model.addAttribute("users",userRepository.findByEmail(principal.getName()));
         return "viewRecipe";
     }
 
     @PostMapping("/viewRecipe")
     public String RecipePost(Model model, Principal principal){
-        model.addAttribute("recipes",recipeRepository.findByUser(userRepository.findByEmail(principal.getName())));
+        model.addAttribute("recipes",recipeService.listAllRecipe(principal.getName()));
         model.addAttribute("users",userRepository.findByEmail(principal.getName()));
         return "viewRecipe";
     }
@@ -142,6 +147,12 @@ public class indexController implements WebMvcConfigurer {
     public String IngGet(Model model,@RequestParam Integer id){
         model.addAttribute("recipes",recipeRepository.findRecipeById(id));
         return "viewIng";
+    }
+
+    @GetMapping("/add-shop")
+    public String ShoppingGet(Model model, @RequestParam String ing, Principal principal){
+        shoppingListService.registerShoppingList(ing,principal);
+        return "index";
     }
 
 
