@@ -31,8 +31,11 @@
 </head>
 <body>
 <div style="max-width: 350px; margin: 0 auto;">
-
-    <h3 th:text="${recipes.ingredient}"></h3>
+    <h3 th:text="${recipes.ingredient}" />
+    <form th:action="@{/add-shop}" method="get">
+        <input type="text" name="ing" th:value="${recipes.getIngredient()}" class="d-none">
+        <input type="submit" value="Add To Shopping List" class="btn btn-success">
+    </form>
 </div>
 </body>
 </html>
