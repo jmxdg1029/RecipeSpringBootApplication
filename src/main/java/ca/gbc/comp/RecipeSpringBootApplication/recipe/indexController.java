@@ -10,7 +10,6 @@ Description: This is the index controller, it controls meal plan, list recipe, c
 
 package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
-
 import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
 import org.dom4j.rule.Mode;
@@ -153,6 +152,20 @@ public class indexController implements WebMvcConfigurer {
     public String ShoppingGet(Model model, @RequestParam String ing, Principal principal){
         shoppingListService.registerShoppingList(ing,principal);
         return "index";
+    }
+
+    @GetMapping("/shoppingList")
+    public String shopGet(Model model, Principal principal){
+        model.addAttribute("shopping",shoppingListService.listAll(principal.getName()));
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "shoppingList";
+    }
+
+    @PostMapping("/shoppingList")
+    public String shopPost(Model model, Principal principal){
+        model.addAttribute("shopping",shoppingListService.listAll(principal.getName()));
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "shoppingList";
     }
 
 

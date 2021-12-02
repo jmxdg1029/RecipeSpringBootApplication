@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface ShoppingListRepository extends JpaRepository<ShoppingList, Integer> {
     ShoppingList findByUser(User user);
+
+    List<ShoppingList> findByUser_Email(String user);
 }
