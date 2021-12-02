@@ -30,6 +30,7 @@
     </div>
 </head>
 <body>
+
 <div style="max-width: 350px; margin: 0 auto;">
 
     <div style="max-width: 350px;">
@@ -47,8 +48,9 @@
         </thread>
         <tbody>
         <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipe}"></td>
-
+            <td th:text="${recipe.getId()}"></td>
+            <td th:text="${recipe.getName()}"></td>
+            <td th:text="${recipe.user.getFirstname()}"></td>
         </tr>
         </tbody>
     </table>
