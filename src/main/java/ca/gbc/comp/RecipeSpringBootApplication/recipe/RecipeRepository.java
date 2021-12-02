@@ -18,7 +18,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Query(value="select r from Recipe r where r.name like %:search%")
     List<Recipe> findByKeyword(String search);
 
-
+   Recipe findRecipeById(Integer id);
     Recipe findByName(String name);
 
 }

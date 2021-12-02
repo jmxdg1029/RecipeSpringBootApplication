@@ -138,4 +138,12 @@ public class indexController implements WebMvcConfigurer {
         return "viewRecipe";
     }
 
+    @GetMapping("/view-btn")
+    public String IngGet(Model model,@RequestParam Integer id){
+        model.addAttribute("recipes",recipeRepository.findRecipeById(id));
+        return "viewIng";
+    }
+
+
+
 }
