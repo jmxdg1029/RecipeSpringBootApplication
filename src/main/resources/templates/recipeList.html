@@ -51,6 +51,12 @@
                 <td th:text="${recipe.getName()}"></td>
                 <td th:text="${recipe.user.getFirstname()}"></td>
                 <td>
+                    <form th:action="@{/fav-btn}" method="get">
+                        <input type="text" name="id" th:value="${recipe.getId()}" class="d-none">
+                        <input type="submit" value="Favorite" class="btn btn-warning">
+                    </form>
+                </td>
+                <td>
                     <form th:action="@{/view-btn}" method="get">
                         <input type="text" name="id" th:value="${recipe.getId()}" class="d-none">
                         <input type="submit" value="View" class="btn btn-warning">

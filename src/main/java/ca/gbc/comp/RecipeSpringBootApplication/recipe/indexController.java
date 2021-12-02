@@ -10,9 +10,7 @@ Description: This is the index controller, it controls meal plan, list recipe, c
 
 package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
-import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -22,8 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Date;
 
 @Controller
 public class indexController implements WebMvcConfigurer {
@@ -48,6 +44,12 @@ public class indexController implements WebMvcConfigurer {
 
     @Autowired
     ShoppingListService shoppingListService;
+
+    @Autowired
+    FavoriteListRepository favoriteListRepository;
+
+    @Autowired
+    FavoriteListService favoriteListService;
 
     @GetMapping("/home")
     public String showForm(){
@@ -143,14 +145,26 @@ public class indexController implements WebMvcConfigurer {
     }
 
     @GetMapping("/view-btn")
-    public String IngGet(Model model,@RequestParam Integer id){
+    public String IngSGet(Model model,@RequestParam Integer id){
         model.addAttribute("recipes",recipeRepository.findRecipeById(id));
         return "viewIng";
+    }
+
+    @GetMapping("/fav-btn")
+    public String IngFGet(Model model,@RequestParam Integer id){
+        model.addAttribute("recipes",recipeRepository.findRecipeById(id));
+        return "viewFav";
     }
 
     @GetMapping("/add-shop")
     public String ShoppingGet(Model model, @RequestParam String ing, Principal principal){
         shoppingListService.registerShoppingList(ing,principal);
+        return "index";
+    }
+
+    @GetMapping("/add-fav")
+    public String FavGet(Model model, @RequestParam String ing, Principal principal){
+        favoriteListService.registerFavouriteList(ing,principal);
         return "index";
     }
 
@@ -168,6 +182,17 @@ public class indexController implements WebMvcConfigurer {
         return "shoppingList";
     }
 
+    @GetMapping("/favoriteList")
+    public String favGet(Model model, Principal principal){
+        model.addAttribute("favorite",favoriteListService.listAll(principal.getName()));
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "favoriteList";
+    }
 
-
+    @PostMapping("/favoriteList")
+    public String favPost(Model model, Principal principal){
+        model.addAttribute("favorite",favoriteListService.listAll(principal.getName()));
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "favoriteList";
+    }
 }

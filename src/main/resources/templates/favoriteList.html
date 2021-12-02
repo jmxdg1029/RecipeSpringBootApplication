@@ -30,29 +30,24 @@
     </div>
 </head>
 <body>
+
 <div style="max-width: 350px; margin: 0 auto;">
-
     <div style="max-width: 350px;">
-        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${users.lastname}"/>
+        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname } + ${users.lastname}"/>
     </div>
-
-        <ul class="navbar-nav nav mr-auto" style="font-size: 1.1em; border: 1px solid; padding: 20px">
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">Edit Profile</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/viewRecipe}">View My Recipes</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/shoppingList}">View My Shopping List</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/favoriteList}">View My Favourite Recipes</a>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" th:href="@{/listMealPlan}">View My Plan Meal</a>
-            </li>
-        </ul>
+    <h3>Favorite List:</h3>
+    <table>
+        <thread>
+            <tr>
+                <th>Recipe Name</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="favv : ${favorite}">
+            <td th:text="${favv.getName()}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
