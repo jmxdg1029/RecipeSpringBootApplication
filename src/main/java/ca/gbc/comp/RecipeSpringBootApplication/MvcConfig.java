@@ -8,7 +8,11 @@ Description: mvcconfig controls the controller for the login page
  */
 package ca.gbc.comp.RecipeSpringBootApplication;
 
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -19,5 +23,8 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registration").setViewName("registration");
         registry.addViewController("/home").setViewName("index");
+        registry.addViewController("/profile").setViewName("profile");
+
     }
+
 }
