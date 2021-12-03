@@ -31,32 +31,23 @@
 </head>
 <body>
 <div style="max-width: 350px; margin: 0 auto;">
-    <h1 style="color:blue;font-size:46px;">Profile</h1>
-    <div style="max-width: 350px; margin: 0 auto;">
-        <h2 th:text="${users.firstname}"/>
-        <h2 th:text="${users.lastname}" />
-    </div>
-    <form action="#" th:action="@{/editProfile}" method="get">
-        <button name="edit" type="submit" class="btn btn-success" value="Edit">Edit Profile</button>
+    <h1 style="color:blue;font-size:46px;">Edit Profile</h1>
+    <form th:action="@{/registerEditedProfile}" method="get">
+        <div style="max-width: 350px; margin: 0 auto;">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" id="exampleFormControlInput1" th:placeholder="${users.email}" required>
+            </div>
+            <div for="exampleFormControlInput1" class="mb-3" th:with="np=${'{noop}'}">
+                <label class="form-label">Password</label>
+                <input class="form-control" th:placeholder="${users.password}" name="password" aria-label="default input example" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Submit" class="btn btn-primary mt-4">
+        </div>
     </form>
-    <table>
-        <thread>
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>desc</th>
-                <th>Owner</th>
-            </tr>
-        </thread>
-        <tbody>
-        <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipes.id}"></td>
-            <td th:text="${recipes.name}"></td>
-            <td th:text="${recipes.ingredient}"></td>
-            <td th:text="${recipes.user.firstname}"></td>
-        </tr>
-        </tbody>
-    </table>
+
 </div>
 </body>
 </html>

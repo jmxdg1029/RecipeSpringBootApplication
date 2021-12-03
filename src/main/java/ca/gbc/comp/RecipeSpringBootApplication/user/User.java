@@ -21,8 +21,19 @@ public class User {
     private String lastname;
     private String password;
     private String email;
+    @Column(length = 64)
+    private String photos;
 
-    public User(){}
+    public User() {
+
+    }
+
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null) return null;
+
+        return "/user-photos/" + id + "/" + photos;
+    }
 
     public User(String email, String password){
         this.email = email;
@@ -63,5 +74,6 @@ public class User {
         this.password = "{noop}" + password;
     }
 
-
+    public void setPhotos(String fileName) {
+    }
 }

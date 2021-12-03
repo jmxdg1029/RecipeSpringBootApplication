@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -26,5 +27,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         System.out.println(user);
         System.out.println(username);
         return new CustomUser(user);
+    }
+
+    public void updatePassword(User user, String newPassword) {
+        user.setPassword(newPassword);
+        userRepository.save(user);
     }
 }

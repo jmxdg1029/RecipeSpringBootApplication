@@ -11,6 +11,7 @@ Description: This is the index controller, it controls meal plan, list recipe, c
 package ca.gbc.comp.RecipeSpringBootApplication.recipe;
 
 
+import ca.gbc.comp.RecipeSpringBootApplication.user.CustomUserDetailsService;
 import ca.gbc.comp.RecipeSpringBootApplication.user.User;
 import ca.gbc.comp.RecipeSpringBootApplication.user.UserRepository;
 import org.dom4j.rule.Mode;
@@ -125,5 +126,27 @@ public class indexController implements WebMvcConfigurer {
         model.addAttribute("users",userRepository.findByEmail(principal.getName()));
         return "profile";
     }
+
+    @GetMapping(value = "/editProfile")
+    public String editProfile(Model model, Principal principal){
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "editProfile";
+    }
+
+
+
+    @GetMapping("/registerEditedProfile")
+    public String updateUser(User user, Principal principal, Model model,@RequestParam String email,@RequestParam String password) {
+        User currUser = userRepository.findByEmail(principal.getName());
+        System.out.println(currUser);
+        System.out.println(currUser.getEmail());
+        System.out.println(currUser.getPassword());
+        currUser.setEmail(email);
+        userRepository.save(currUser);
+        currUser.setPassword(password);
+        userRepository.save(currUser);
+        return "login";
+    }
+
 
 }
