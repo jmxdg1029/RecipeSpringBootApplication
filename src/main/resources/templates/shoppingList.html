@@ -33,13 +33,13 @@
 
 <div style="max-width: 350px; margin: 0 auto;">
     <div style="max-width: 350px;">
-        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname } + ${users.lastname}"/>
+        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname } + ${' '} + ${users.lastname}"/>
     </div>
     <h3>Shopping List:</h3>
-    <table>
+    <table class="table table-striped">
         <thread>
             <tr>
-                <th>Ingredient</th>
+                <th scope="col">Ingredient</th>
             </tr>
         </thread>
         <tbody>
