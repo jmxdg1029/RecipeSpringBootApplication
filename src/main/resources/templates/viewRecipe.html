@@ -34,22 +34,23 @@
 <div style="max-width: 350px; margin: 0 auto;">
 
     <div style="max-width: 350px;">
-        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${users.lastname}"/>
+        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${' '} + ${users.lastname}"/>
     </div>
 
-    <table>
+    <table class="table table-light">
         <thread>
             <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>desc</th>
-                <th>Owner</th>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">desc</th>
+                <th scope="col">Owner</th>
             </tr>
         </thread>
         <tbody>
         <tr th:each="recipe : ${recipes}">
-            <td th:text="${recipe.getId()}"></td>
+            <td  th:text="${recipe.getId()}"></td>
             <td th:text="${recipe.getName()}"></td>
+            <td th:text="${recipe.getIngredient()}"></td>
             <td th:text="${recipe.user.getFirstname()}"></td>
         </tr>
         </tbody>
