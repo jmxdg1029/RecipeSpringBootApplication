@@ -34,5 +34,8 @@ public class RecipeService {
     public void registerRec(String name, String desc, Principal principal) {
         Recipe recipe = new Recipe(name, desc, userRepository.findByEmail(principal.getName()));
         recipeRepository.save(recipe);
+
+
+
     }
 }
