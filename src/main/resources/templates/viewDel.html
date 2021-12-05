@@ -30,38 +30,13 @@
     </div>
 </head>
 <body>
-
 <div style="max-width: 350px; margin: 0 auto;">
-
-    <div style="max-width: 350px;">
-        <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${' '} + ${users.lastname}"/>
-    </div>
-
-    <table class="table table-light">
-        <thread>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Ingredients</th>
-                <th scope="col">Owner</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thread>
-        <tbody>
-        <tr th:each="recipe : ${recipes}">
-            <td  th:text="${recipe.getId()}"></td>
-            <td th:text="${recipe.getName()}"></td>
-            <td th:text="${recipe.getIngredient()}"></td>
-            <td th:text="${recipe.user.getFirstname()}"></td>
-            <td>
-                <form th:action="@{/delete-btn}" method="get">
-                    <input type="text" name="id" th:value="${recipe.getId()}" class="d-none">
-                    <input type="submit" value="Delete" class="btn btn-warning">
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <h3 th:text="${recipes.ingredient}" />
+    <form th:action="@{/del-ing}" method="get">
+        <input type="text" name="id" th:value="${recipes.getId()}" class="d-none">
+        <input type="text"  th:value="${recipes.getIngredient()}" class="d-none">
+        <input type="submit" value="Delete Ingredients" class="btn btn-success">
+    </form>
 </div>
 </body>
 </html>

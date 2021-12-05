@@ -82,9 +82,7 @@ public class indexController implements WebMvcConfigurer {
 
     @GetMapping(value = "/registerMealPlan")
     public String submitMealPlanGet(@RequestParam("date")
-                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
-                                    @RequestParam Recipe recipe,
-                                    Principal principal){
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam Recipe recipe, Principal principal){
         mealPlanService.registerMealPlan(date,recipe,principal);
         System.out.println(date);
         System.out.println(recipe);
@@ -181,6 +179,12 @@ public class indexController implements WebMvcConfigurer {
         return "viewFav";
     }
 
+    @GetMapping("/delete-btn")
+    public String IngDGet(Model model,@RequestParam Integer id){
+        model.addAttribute("recipes",recipeRepository.findRecipeById(id));
+        return "viewDel";
+    }
+
     @GetMapping("/add-shop")
     public String ShoppingGet(Model model, @RequestParam String ing, Principal principal){
         shoppingListService.registerShoppingList(ing,principal);
@@ -190,6 +194,15 @@ public class indexController implements WebMvcConfigurer {
     @GetMapping("/add-fav")
     public String FavGet(Model model, @RequestParam String ing, Principal principal){
         favoriteListService.registerFavouriteList(ing,principal);
+        return "index";
+    }
+
+    @GetMapping("/del-ing")
+    public String DelGet(@RequestParam Integer id){
+        Recipe currRecipe = recipeRepository.findRecipeById(id);
+        System.out.println(currRecipe);
+        currRecipe.setIngredient(null);
+        recipeRepository.save(currRecipe);
         return "index";
     }
 
