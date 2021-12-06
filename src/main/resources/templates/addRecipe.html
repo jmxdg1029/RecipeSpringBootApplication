@@ -7,20 +7,20 @@
     <title>Home page</title>
     <div class="ml-5">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
             <a class="navbar-brand h2" style="font-size: 2.2em; margin-left: 2%" th:href="@{/home}">Recipe</a>
             <ul class="navbar-nav nav mr-auto">
                 <li class="navbar-item">
-                    <a class="nav-link" th:href="@{/profile}">Profile</a>
+                    <a class="nav-link mx-1" th:href="@{/profile}">Profile</a>
                 </li>
                 <li class="navbar-item">
-                    <a class="nav-link" th:href="@{/list}">View Recipe</a>
+                    <a class="nav-link mx-1" th:href="@{/list}">View Recipe</a>
                 </li>
                 <li class="navbar-item">
-                    <a class="nav-link" th:href="@{/listMealPlan}">Plan Meal</a>
+                    <a class="nav-link mx-1" th:href="@{/listMealPlan}">Plan Meal</a>
                 </li>
             </ul>
-            <form  action="#" th:action="@{/logout}" method="post">
+            <form  action="#" th:action="@{/logout}" method="post" class="mx-1">
                 <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
             </form>
         </nav>

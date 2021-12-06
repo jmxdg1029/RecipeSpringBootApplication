@@ -7,38 +7,38 @@
     <title>Home page</title>
     <div class="ml-5">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
             <a class="navbar-brand h2" style="font-size: 2.2em; margin-left: 2%" th:href="@{/home}">Recipe</a>
             <ul class="navbar-nav nav mr-auto">
                 <li class="navbar-item">
-                    <a class="nav-link" th:href="@{/profile}">Profile</a>
+                    <a class="nav-link mx-1" th:href="@{/profile}">Profile</a>
                 </li>
                 <li class="navbar-item">
-                    <a class="nav-link" th:href="@{/list}">View Recipe</a>
+                    <a class="nav-link mx-1" th:href="@{/list}">View Recipe</a>
                 </li>
                 <li class="navbar-item">
-                    <a class="nav-link" th:href="@{/listMealPlan}">Plan Meal</a>
+                    <a class="nav-link mx-1" th:href="@{/listMealPlan}">Plan Meal</a>
                 </li>
             </ul>
-            <form  action="#" th:action="@{/create}" method="get">
+            <form  action="#" th:action="@{/create}" method="get" class="mx-1">
                 <button name="create" type="submit" class="btn btn-success" value="create">Create Recipe</button>
             </form>
-            <form  action="#" th:action="@{/logout}" method="post">
+            <form  action="#" th:action="@{/logout}" method="post" class="mx-1">
                 <button name="logoutBut" type="submit" class="btn btn-danger" value="logoutBut">Logout</button>
             </form>
         </nav>
     </div>
 </head>
 <body>
-<div style="max-width: 350px; margin: 0 auto;">
+<div class="container border border-dark border-2 rounded text-center mt-2">
 
-    <div style="max-width: 350px;">
+    <div>
         <h2 style="padding: 20px; font-size: 3em; text-align: center" th:text="${users.firstname} + ${' '} + ${users.lastname}"/>
     </div>
     <form action="#" th:action="@{/editProfile}" method="get">
-        <button name="edit" type="submit" class="btn btn-success" value="Edit">Edit Profile</button>
+        <button name="edit" type="submit" class="btn btn-success my-2" value="Edit">Edit Profile</button>
     </form>
-        <ul class="navbar-nav nav mr-auto" style="font-size: 1.1em; border: 1px solid; padding: 20px">
+        <ul class="navbar-nav nav mr-auto">
             <li class="navbar-item">
                 <a class="nav-link" th:href="@{/viewRecipe}">View My Recipes</a>
             </li>
