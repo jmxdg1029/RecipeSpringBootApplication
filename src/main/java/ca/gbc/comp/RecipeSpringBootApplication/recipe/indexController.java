@@ -55,9 +55,7 @@ public class indexController implements WebMvcConfigurer {
     FavoriteListService favoriteListService;
 
     @GetMapping("/home")
-    public String showForm(){
-        return "index";
-    }
+    public String showForm(){return "index";}
 
     @GetMapping(value = "/create")
     public String createButton()
