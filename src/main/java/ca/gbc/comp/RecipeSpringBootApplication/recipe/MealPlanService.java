@@ -29,6 +29,6 @@ public class MealPlanService {
 
     public void registerMealPlan(LocalDate date, Recipe recipe, Principal principal){
         MealPlan mealPlan = new MealPlan(date, recipe, userRepository.findByEmail(principal.getName()));
-                mealPlanRepository.save(mealPlan);
+        mealPlanRepository.save(mealPlan);
     }
 }
