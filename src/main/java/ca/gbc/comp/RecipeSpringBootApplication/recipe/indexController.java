@@ -23,6 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Controller
 public class indexController implements WebMvcConfigurer {
@@ -37,7 +38,13 @@ public class indexController implements WebMvcConfigurer {
     MealPlanService mealPlanService;
 
     @Autowired
+    EventPlansService eventPlansService;
+
+    @Autowired
     MealPlanRepository mealPlanRepository;
+
+    @Autowired
+    EventPlansRepository eventPlansRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -101,6 +108,81 @@ public class indexController implements WebMvcConfigurer {
         return "listMealPlan";
     }
 
+
+    @GetMapping("/listEventPlan")
+    public String eventPlansGet(Model model, Principal principal){
+        model.addAttribute("eventPlans",eventPlansRepository.findAll());
+        model.addAttribute("recipes",recipeRepository.findAll());
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "eventPlan";
+    }
+
+    @PostMapping("/listEventPlan")
+    public String eventPlansPost(Model model, Principal principal){
+        model.addAttribute("eventPlans",eventPlansRepository.findAll());
+        model.addAttribute("recipes",recipeRepository.findAll());
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        return "eventPlan";
+    }
+
+    @GetMapping(value = "/createEventPlan")
+    public String createEventPlanButton(Model model)
+    {
+        model.addAttribute("recipes",recipeRepository.findAll());
+        System.out.println(recipeRepository.findAll());
+        return "addEventPlan";
+    }
+
+    @GetMapping(value = "/registerEventPlan")
+    public String submitEventPlanGet(@RequestParam String eventName, @RequestParam("date")
+                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                                    @RequestParam Recipe mealOne, @RequestParam Recipe mealTwo,
+                                     @RequestParam Recipe mealThree,
+                                    Principal principal){
+            eventPlansService.registerEventPlan(eventName,date,mealOne,mealTwo,mealThree,principal);
+            System.out.println(date);
+            return "index";
+    }
+
+
+    @GetMapping(value = "/editEventPlans")
+    public String editEventPlan(Model model, Principal principal, @RequestParam Integer id){
+        model.addAttribute("users",userRepository.findByEmail(principal.getName()));
+        model.addAttribute("recipes",recipeRepository.findAll());
+        model.addAttribute("eventPlans",eventPlansRepository.findEventPlansById(id));
+        return "editEventPlan";
+    }
+
+    @GetMapping(value = "/registerEditedEventPlan")
+    public String submitEditedEventPlanGet(@RequestParam Integer id,@RequestParam String eventName, @RequestParam("date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+                                     @RequestParam Recipe mealOne, @RequestParam Recipe mealTwo,
+                                     @RequestParam Recipe mealThree,
+                                     Principal principal){
+        EventPlans currEventPlans = eventPlansRepository.findEventPlansById(id);
+        currEventPlans.setEventName(eventName);
+        currEventPlans.setDate(date);
+        currEventPlans.setMealOne(mealOne);
+        currEventPlans.setMealTwo(mealTwo);
+        currEventPlans.setMealThree(mealThree);
+        eventPlansRepository.save(currEventPlans);
+        return "index";
+    }
+
+    @GetMapping("/deleteEventPlan")
+    public String deleteEventPlanGet(Model model,@RequestParam Integer id){
+            model.addAttribute("eventPlan",eventPlansRepository.findEventPlansById(id));
+            return "deleteEventPlan";
+    }
+
+    @GetMapping("/submitDeleteEventPlan")
+    public String deleteEventPlan(@RequestParam Integer id){
+        EventPlans currEventPlan = eventPlansRepository.findEventPlansById(id);
+        System.out.println(currEventPlan);
+        eventPlansRepository.delete(currEventPlan);
+        return "index";
+    }
+
     @GetMapping("/list")
     public String listRecipeGet(Model model){
         model.addAttribute("recipes",recipeRepository.findAll());
@@ -131,13 +213,12 @@ public class indexController implements WebMvcConfigurer {
         return "profile";
     }
 
+
     @GetMapping(value = "/editProfile")
     public String editProfile(Model model, Principal principal){
         model.addAttribute("users",userRepository.findByEmail(principal.getName()));
         return "editProfile";
     }
-
-
 
     @GetMapping("/registerEditedProfile")
     public String updateUser(User user, Principal principal, Model model,@RequestParam String email,@RequestParam String password) {
@@ -151,7 +232,6 @@ public class indexController implements WebMvcConfigurer {
         userRepository.save(currUser);
         return "login";
     }
-
 
     @GetMapping("/viewRecipe")
     public String RecipeGet(Model model, Principal principal){
